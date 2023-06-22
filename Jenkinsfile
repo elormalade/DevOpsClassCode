@@ -13,14 +13,14 @@
                     }
                 }
                 stage('Compile'){
-                    agent {label 'Cloude Nodes'}
+                    agent {label 'Slave11'}
                     steps{
                         echo 'compiling...'
                         sh 'mvn compile'
                 }
                 }
                 stage('CodeReview'){
-                    agent {label 'Cloude Nodes'}
+                    agent {label 'Slave11'}
                     steps{
                     
                 echo 'codeReview...'
