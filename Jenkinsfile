@@ -13,14 +13,14 @@
                     }
                 }
                 stage('Compile'){
-                    agent {label 'slave1'}
+                    agent {label 'Cloude Nodes'}
                     steps{
                         echo 'compiling...'
                         sh 'mvn compile'
                 }
                 }
                 stage('CodeReview'){
-                    agent {label 'slave1'}
+                    agent {label 'Cloude Nodes'}
                     steps{
                     
                 echo 'codeReview...'
@@ -28,7 +28,7 @@
                     }
                 }
                 stage('UnitTest'){
-                    agent {label 'slave2'}
+                    agent {label 'Slave22'}
                     steps{
                     echo 'Testing'
                         sh 'mvn test'
