@@ -5,21 +5,21 @@
             }
             agent none
             stages{
-                stage('Checkout'){
+                stage('Checkout on Master'){
                     agent any
                     steps{
                 echo 'cloning...'
                         git 'https://github.com/elormalade/DevOpsClassCode.git'
                     }
                 }
-                stage('Compile'){
+                stage('Compile on Slave11'){
                     agent {label 'Slave11'}
                     steps{
                         echo 'compiling...'
                         sh 'mvn compile'
                 }
                 }
-                stage('CodeReview'){
+                stage('CodeReview on Slave11'){
                     agent {label 'Slave11'}
                     steps{
                     
@@ -27,7 +27,7 @@
                         sh 'mvn pmd:pmd'
                     }
                 }
-                stage('UnitTest'){
+                stage('UnitTest on Slave22'){
                     agent {label 'Slave22'}
                     steps{
                     echo 'Testing'
@@ -39,7 +39,7 @@
                     }
                 }	
                 }
-                stage('Package'){
+                stage('Package on Master'){
                     agent any
                     steps{
                         sh 'mvn package'
